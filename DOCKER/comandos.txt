@@ -1,0 +1,22 @@
+Eliminar imagenes
+    docker rmi ##nombre del imagen
+Eliminar contenedores
+    docker rm ps ##nombre del contenedor
+Eliminar volumes
+    docker rm volume ##nombre del volumen 
+Eliminar todo
+    docker system prune -a --volumes
+
+
+Permitir Acceso a la Pantalla X
+    xhost +local:docker
+
+Revertir los permisos después de terminar de usar la interfaz gráfica
+    xhost -local:docker
+
+Entrar al contenedor en modo root
+docker exec -u root -it (nombre del contenedor) bash
+
+
+export UID=$(id -u)
+export GID=$(id -g)

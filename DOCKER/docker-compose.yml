@@ -1,0 +1,24 @@
+services:
+  prueba:
+    build: .
+    image: tensorflow/tensorflow:2.12.0-gpu
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - capabilities: [gpu]
+    runtime: nvidia
+    user: "${UID}:${GID}"
+    environment:
+      # - NVIDIA_VISIBLE_DEVICES=all
+      # - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - DISPLAY=${DISPLAY}
+      - QT_QPA_PLATFORM=xcb  # Establece la plataforma de Qt
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      # - ${HOME}:/home/mark
+      - /home/mark/Documentos/DOCKER_TENSORFLOW/codigos:/home/Documentos
+      # - /home/mark/.config:/home/mark/.config  # Montar el directorio de configuración
+    command: /bin/bash
+    stdin_open: true
+    tty: true
